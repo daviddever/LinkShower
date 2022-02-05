@@ -1,11 +1,12 @@
-# LinkGrabber
+# LinkShower
 
-IRC bot to scrape links from a channel, store in a sqlite database and show in a simple web app.
+Simple web front end for [https://github.com/daviddever/LinkShower](LinkGrabber) (IRC bot to scrape links from a channel, store in a sqlite database)
 
 
-`linkgrabber.py` runs the irc bot and writes the links to the database, using irc and urlextract modules.
+`linkshower.py` is a flask application that runs the site (just basic html and css). 
+`linkgrabber.py` (in [https://github.com/daviddever/LinkShower](LinkGrabber) runs the irc bot and writes the links to the database, using irc and urlextract modules.
 
-`linkshower.py` is a flask application that runs the site (just basic html and css).
+Both services have no real functionality without the other.
 
 
 ![alt text](https://raw.githubusercontent.com/daviddever/LinkGrabber/master/sampleimage.png "Sample Image")
