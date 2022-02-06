@@ -1,10 +1,10 @@
 # LinkShower
 
-Simple web front end for [https://github.com/daviddever/LinkShower](LinkGrabber) (IRC bot to scrape links from a channel, store in a sqlite database)
+Simple web front end for [https://github.com/daviddever/LinkGrabber](LinkGrabber) (IRC bot to scrape links from a channel, store in a sqlite database)
 
 
-`linkshower.py` is a flask application that runs the site (just basic html and css). 
-`linkgrabber.py` (in [https://github.com/daviddever/LinkShower](LinkGrabber) runs the irc bot and writes the links to the database, using irc and urlextract modules.
+`linkshower.py` is a flask application that runs the site (just basic html and css).
+`linkgrabber.py` (in [https://github.com/daviddever/LinkGrabber](LinkGrabber) runs the irc bot and writes the links to the database, using irc and urlextract modules.
 
 Both services have no real functionality without the other.
 
@@ -50,7 +50,7 @@ docker run -d -p 6667:6667 -e "IRC_channel=#linkgrabber" \
                            -e "IRC_server=irc.libera.chat" \
                            -e "IRC_db_path=/db/" \
                            -v /db:/db" \
-                           daviddever/linkgrabber:0.2
+                           ghcr.io/daviddever/linkgrabber:main
 ```
 
 ```
@@ -59,7 +59,7 @@ docker run -d -p 80:80 -e "IRC_channel=#linkgrabber" \
                        -e "IRC_server=irc.libera.chat" \
                        -e "IRC_db_path=/db/" \
                        -v /db:/db" \
-                       daviddever/linkshower:0.2
+                       ghcr.io/daviddever/linkshower:main
 ```
 
 Docker Compose example
@@ -70,7 +70,7 @@ version: "3.7"
 services:
 
   linkgrabber:
-    image: daviddever/linkgrabber:0.2
+    image: ghcr.io/daviddever/linkgrabber:main
     container_name: link_grabber
     environment:
       - IRC_channel=#linkgrabber
@@ -84,7 +84,7 @@ services:
     restart: unless-stopped
 
   linkshower:
-    image: daviddever/linkshower:0.2
+    image: ghcr.io/daviddever/linkshower:main
     container_name: link_shower
     environment:
       - IRC_channel=#linkgrabber
@@ -134,6 +134,6 @@ an additional environmental variable needs to be set for Flask)
 
 Be sure that both applications have access to the datbase location
 
-`./linkgrabber.py`
-
 `flask run`
+
+**Start LinkGrabber**
