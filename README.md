@@ -133,6 +133,8 @@ an additional environmental variable needs to be set for Flask)
 
 **Start the application**
 
+Be sure that both applications have access to the datbase location
+
 `./linkgrabber.py`
 
 `flask run`
