@@ -8,7 +8,6 @@ Simple web front end for [https://github.com/daviddever/LinkShower](LinkGrabber)
 
 Both services have no real functionality without the other.
 
-
 ![alt text](https://raw.githubusercontent.com/daviddever/LinkGrabber/master/sampleimage.png "Sample Image")
 
 ## Configuration
