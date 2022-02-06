@@ -7,7 +7,6 @@ COPY LICENSE README.md linkshower.py requirements.txt templates static /app/Link
 WORKDIR /app/LinkShower
 
 RUN pip install --no-cache-dir -r requirements.txt && \
-    rm -rf /var/cache/apk/* && \
-    apk del git ca-certificates
+    rm -rf /var/cache/apk/*
 
 ENV MODULE_NAME="LinkShower.linkshower"
