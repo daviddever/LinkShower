@@ -1,7 +1,7 @@
 FROM tiangolo/meinheld-gunicorn:python3.7-alpine3.8
 
 RUN mkdir /app/LinkShower
-RUN mkdir -p /app/LinkShower/static/syles
+RUN mkdir -p /app/LinkShower/static/styles
 RUN mkdir /app/LinkShower/templates
 
 COPY LICENSE README.md linkshower.py requirements.txt /app/LinkShower/
