@@ -1,4 +1,4 @@
-FROM tiangolo/meinheld-gunicorn:python3.7-alpine3.8
+FROM tiangolo/meinheld-gunicorn:python3.9
 
 RUN mkdir /app/LinkShower
 RUN mkdir -p /app/LinkShower/static/styles
