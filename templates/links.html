@@ -26,9 +26,9 @@
     <h2>
     <center>
       {% if nick | length %}
-        <a href="/{{ nick }}/{{ previous_page }}">&lt;</a> <a href="/1">Remove Filter</a> <a href="/{{ nick }}/{{ next_page }}"}>&gt;</a>
+        <a href="/{{ nick }}/{{ previous_page }}">&lt;</a> <a href="/top">Top</a> <a href="/1">Remove Filter</a> <a href="/{{ nick }}/{{ next_page }}"}>&gt;</a>
       {% else %}
-        <a href="/{{ previous_page }}">&lt;</a> <a href="/{{ next_page }}"}>&gt;</a>
+        <a href="/{{ previous_page }}">&lt;</a> <a href="/top">Top</a> <a href="/{{ next_page }}"}>&gt;</a>
       {% endif %}
     </center>
     <h2>

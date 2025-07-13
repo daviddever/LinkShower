@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <div class="main-container">
+    <header>
+    <title>LinkGrabber {{ channel }} - Top Sites</title>
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/main.css') }}">
+    </header>
+    <body>
+      <h1>
+        {{ server }} {{ channel }} - Top 20 Sites
+      </h1>
+      <table class="TFtable">
+        {% for site in top_sites %}
+          <tr>
+            <td>
+              <strong>{{ loop.index }}.</strong> {{ site[0] }} <span style="color: #666;">({{ site[1] }} links)</span>
+            </td>
+          </tr>
+        {% endfor %}
+      </table>
+    </body>
+    <h2>
+    <center>
+      <a href="/">Back to Links</a>
+    </center>
+    <h2>
+    <footer>
+      <h6>
+        LinkGrabber
+        <br>
+        <a href="https://github.com/daviddever/LinkGrabber">github.com/daviddever/LinkGrabber</a>
+      </h6>
+    </footer>
+  </div>
+</html>

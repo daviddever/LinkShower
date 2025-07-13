@@ -78,3 +78,45 @@ def nick_page(nick, page_id):
                             nick=nick,
                             next_page=next_page,
                             previous_page=previous_page)
+
+@app.route('/top')
+def top_sites():
+    conn = sqlite3.connect(db_path)
+    c = conn.cursor()
+
+    top_sites = []
+
+    for row in c.execute('''SELECT 
+                            CASE 
+                                WHEN url LIKE 'http://%' THEN 
+                                    CASE 
+                                        WHEN instr(substr(url, 8), '/') > 0 THEN substr(url, 8, instr(substr(url, 8), '/') - 1)
+                                        WHEN instr(substr(url, 8), '?') > 0 THEN substr(url, 8, instr(substr(url, 8), '?') - 1)
+                                        ELSE substr(url, 8)
+                                    END
+                                WHEN url LIKE 'https://%' THEN 
+                                    CASE 
+                                        WHEN instr(substr(url, 9), '/') > 0 THEN substr(url, 9, instr(substr(url, 9), '/') - 1)
+                                        WHEN instr(substr(url, 9), '?') > 0 THEN substr(url, 9, instr(substr(url, 9), '?') - 1)
+                                        ELSE substr(url, 9)
+                                    END
+                                ELSE 
+                                    CASE 
+                                        WHEN instr(url, '/') > 0 THEN substr(url, 1, instr(url, '/') - 1)
+                                        WHEN instr(url, '?') > 0 THEN substr(url, 1, instr(url, '?') - 1)
+                                        ELSE url
+                                    END
+                            END as domain,
+                            COUNT(*) as count
+                            FROM links 
+                            GROUP BY domain 
+                            ORDER BY count DESC 
+                            LIMIT 20'''):
+        top_sites.append(row)
+
+    c.close()
+
+    return render_template('top.html',
+                            top_sites=top_sites,
+                            server=server,
+                            channel=channel)
